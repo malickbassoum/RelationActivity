@@ -1,5 +1,6 @@
 package com.bassoum.activitiestest;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -83,6 +84,11 @@ public class FirstActivity extends AppCompatActivity {
         btnCalculator2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent( Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                intent.setComponent(new ComponentName("com.android.calculator2",
+                        "com.android.calculator2.Calculator"));
+                startActivity(intent);
 
 
             }
@@ -92,6 +98,9 @@ public class FirstActivity extends AppCompatActivity {
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Uri uri=Uri.parse("tel: 338710734");
+                Intent intent=new Intent(Intent.ACTION_CALL, uri);
+                startActivity(intent);
 
 
             }
