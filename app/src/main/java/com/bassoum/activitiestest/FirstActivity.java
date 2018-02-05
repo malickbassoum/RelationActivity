@@ -1,6 +1,7 @@
 package com.bassoum.activitiestest;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,12 @@ public class FirstActivity extends AppCompatActivity {
     private EditText txtInputData;
     private Button btnOpenActivity;
     private TextView lblResultText;
+    private Button btnGoHome;
+    private Button btnBrowse;
+    private Button btnCalculator1;
+    private Button btnCalculator2;
+    private Button btnCall;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,59 @@ public class FirstActivity extends AppCompatActivity {
                 );
                 intent.putExtra("message", txtInputData.getText().toString() );
                 startActivityForResult(intent, SECOND_CALL_ID);
+            }
+        });
+        //...External activities....//
+
+        btnGoHome=(Button) findViewById(R.id.btnGoHome);
+        btnGoHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent( Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+
+            }
+        });
+
+        btnBrowse=(Button) findViewById(R.id.btnBrowse);
+        btnBrowse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent=new Intent( Intent.ACTION_MAIN);
+
+                Uri uri=Uri.parse("https://openclassrooms.com/");
+                Intent intent=new Intent( Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
+            }
+        });
+
+        btnCalculator1=(Button) findViewById(R.id.btnCalculator1);
+        btnCalculator1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent( Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_CALCULATOR);
+                startActivity(intent);
+            }
+        });
+
+        btnCalculator2=(Button) findViewById(R.id.btnCalculator2);
+        btnCalculator2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+        btnCall=(Button) findViewById(R.id.btnCall);
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
 
